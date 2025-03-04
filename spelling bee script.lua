@@ -22,6 +22,7 @@ end
 if not soundContainer then
     -- what??? 
     error("no soundcontainer was found, please rejoin and try again")
+end
 local wordlist = {
     ["rbxassetid://119699946181489"] = "dolphin",
     ["rbxassetid://17620333788"] = "thesis",
