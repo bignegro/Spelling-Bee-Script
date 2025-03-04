@@ -531,9 +531,10 @@ local function autotypeword(word)
         presskey(letter)
         task.wait(typingdelay)
     end
-    if typingword then
-        presskey("enter")
-    end
+    presskey("enter")
+    --if typingword then
+        
+    --end
     typingword = false
     istypingmaybe = false
 end
