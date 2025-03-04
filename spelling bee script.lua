@@ -523,6 +523,7 @@ local function fsic(container)
     for _, container in pairs(game:GetChildren()) do
         fsic(container)
     end
+wait(5)
 if not soundContainer then
     -- what??? 
     error("no soundcontainer was found, please rejoin and try again")
