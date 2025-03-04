@@ -5,7 +5,7 @@ local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 local soundContainer = nil
 for _, service in pairs(game:GetChildren()) do
     for _, item in pairs(service:GetChildren()) do
-        if item:IsA("Folder") then
+        if item:IsA("Folder") and item.Name ~= "SFX" then
             local soundCount = 0
             for _, child in pairs(item:GetChildren()) do
                 if child:IsA("Sound") then
