@@ -3,24 +3,21 @@
 
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 local soundContainer = nil
-for _, service in pairs(game:GetChildren()) do
-    for _, item in pairs(service:GetChildren()) do
-        if item:IsA("Folder") and item.Name ~= "SFX" then
-            print(item.Name)
-            local soundCount = 0
-            for _, child in pairs(item:GetChildren()) do
-                if child:IsA("Sound") then
-                    soundCount = soundCount + 1
+local function fsic(container)
+        for _, descendant in ipairs(container:GetDescendants()) do
+            if descendant:IsA("Sound") and descendant.Playing then
+                local soundId = tostring(descendant.SoundId)
+                if wordlist[soundId] then
+                    soundContainer = descendant.Parent
+                    break
                 end
-            end
-            print(soundCount .. "For, " .. item.Name)
-            if soundCount > 5 then
-                print("Folder with more than 5 sounds found: " .. item.Name)
-                soundContainer = item
             end
         end
     end
-end
+
+    for _, container in pairs(game:GetChildren()) do
+        fsic(container)
+    end
 if not soundContainer then
     -- what??? 
     error("no soundcontainer was found, please rejoin and try again")
