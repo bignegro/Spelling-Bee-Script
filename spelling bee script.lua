@@ -2,6 +2,26 @@
 -- let me know if i missed any words, or have any duplicates. you can either tell me in the discord or make an issue ticket that has the necessary info
 
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+local soundContainer = nil
+for _, service in pairs(game:GetChildren()) do
+    for _, item in pairs(service:GetChildren()) do
+        if item:IsA("Folder") then
+            local soundCount = 0
+            for _, child in pairs(item:GetChildren()) do
+                if child:IsA("Sound") then
+                    soundCount = soundCount + 1
+                end
+            end
+            if soundCount > 5 then
+                print("Folder with more than 5 sounds found: " .. item.Name)
+                soundContainer = item
+            end
+        end
+    end
+end
+if not soundContainer then
+    -- what??? 
+    error("no soundcontainer was found, please rejoin and try again")
 local wordlist = {
     ["rbxassetid://119699946181489"] = "dolphin",
     ["rbxassetid://17620333788"] = "thesis",
