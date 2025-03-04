@@ -510,9 +510,12 @@ local keycodemap = {
 
 local function fsic(container)
         for _, descendant in ipairs(container:GetDescendants()) do
-            if descendant:IsA("Sound") and descendant.Playing then
+            if descendant:IsA("Sound") then
                 local soundId = tostring(descendant.SoundId)
+				print("soundId", soundId)
                 if wordlist[soundId] then
+					print("kill me why not work")
+					print(descendant.Parent.Name)
                     soundContainer = descendant.Parent
                     break
                 end
@@ -552,8 +555,8 @@ local function autotypeword(word)
         if not typingword then break end
         presskey(letter)
         task.wait(typingdelay)
-    end
-    presskey("enter")
+    endto
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Return,false,game)
     --if typingword then
         
     --end
@@ -602,9 +605,7 @@ local function checksound()
         end
     end
 
-    for _, container in pairs(game:GetService("Lighting"):GetChildren()) do
-        fsic(container)
-    end
+    fsic(soundContainer.Parent)
 end
 
 Tab:CreateButton({
