@@ -6,12 +6,14 @@ local soundContainer = nil
 for _, service in pairs(game:GetChildren()) do
     for _, item in pairs(service:GetChildren()) do
         if item:IsA("Folder") and item.Name ~= "SFX" then
+            print(item.Name)
             local soundCount = 0
             for _, child in pairs(item:GetChildren()) do
                 if child:IsA("Sound") then
                     soundCount = soundCount + 1
                 end
             end
+            print(soundCount .. "For, " .. item.Name)
             if soundCount > 5 then
                 print("Folder with more than 5 sounds found: " .. item.Name)
                 soundContainer = item
