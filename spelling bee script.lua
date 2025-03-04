@@ -3,25 +3,6 @@
 
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 local soundContainer = nil
-local function fsic(container)
-        for _, descendant in ipairs(container:GetDescendants()) do
-            if descendant:IsA("Sound") and descendant.Playing then
-                local soundId = tostring(descendant.SoundId)
-                if wordlist[soundId] then
-                    soundContainer = descendant.Parent
-                    break
-                end
-            end
-        end
-    end
-
-    for _, container in pairs(game:GetChildren()) do
-        fsic(container)
-    end
-if not soundContainer then
-    -- what??? 
-    error("no soundcontainer was found, please rejoin and try again")
-end
 local wordlist = {
     ["rbxassetid://119699946181489"] = "dolphin",
     ["rbxassetid://17620333788"] = "thesis",
@@ -526,6 +507,26 @@ local keycodemap = {
     ["u"] = 0x55, ["v"] = 0x56, ["w"] = 0x57, ["x"] = 0x58,
     ["y"] = 0x59, ["z"] = 0x5A, ["enter"] = 0x0D,
 }
+
+local function fsic(container)
+        for _, descendant in ipairs(container:GetDescendants()) do
+            if descendant:IsA("Sound") and descendant.Playing then
+                local soundId = tostring(descendant.SoundId)
+                if wordlist[soundId] then
+                    soundContainer = descendant.Parent
+                    break
+                end
+            end
+        end
+    end
+
+    for _, container in pairs(game:GetChildren()) do
+        fsic(container)
+    end
+if not soundContainer then
+    -- what??? 
+    error("no soundcontainer was found, please rejoin and try again")
+end
 
 local typingdelay = 0.3
 local autotypeenabled = false
