@@ -528,8 +528,8 @@ local function fsic(container)
     end
 wait(5)
 if not soundContainer then
-    -- what??? 
-    error("no soundcontainer was found, please rejoin and try again")
+    -- what??? this should only happen if it is executed between games so warn the player to not do that
+    error("no soundcontainer was found, please rejoin and try again while the game is running")
 end
 
 local typingdelay = 0.3
