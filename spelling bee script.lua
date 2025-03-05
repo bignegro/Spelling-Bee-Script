@@ -555,7 +555,7 @@ local function autotypeword(word)
         if not typingword then break end
         presskey(letter)
         task.wait(typingdelay)
-    endto
+    end
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Return,false,game)
     --if typingword then
         
